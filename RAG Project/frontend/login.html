@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | RAG Knowledge Workspace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <section id="auth-screen" class="auth-screen">
+      <div class="auth-backdrop auth-backdrop-one"></div>
+      <div class="auth-backdrop auth-backdrop-two"></div>
+      <div class="auth-shell auth-shell-animated">
+        <aside class="auth-visual-panel">
+          <div class="visual-badge">PRIVATE KNOWLEDGE OS</div>
+          <div class="visual-art">
+            <div class="visual-orb orb-large"></div>
+            <div class="visual-orb orb-small"></div>
+            <div class="visual-grid"></div>
+            <div class="visual-card">
+              <span class="visual-card-label">Private Workspace</span>
+              <strong>Ask grounded questions across your documents with a calmer, focused experience.</strong>
+            </div>
+          </div>
+          <div class="visual-copy">
+            <p class="visual-eyebrow">Grounded research</p>
+            <h1>Welcome Back</h1>
+            <p>Sign in to your private document workspace and continue asking grounded questions across your personal RAG library.</p>
+            <div class="visual-callout">
+              <strong>Your own storage</strong>
+              <span>Every login has a separate workspace database and private uploaded files.</span>
+            </div>
+          </div>
+        </aside>
+
+        <section class="auth-form-panel">
+          <div class="auth-brand">RAG Knowledge Workspace</div>
+          <div class="auth-panel-copy">
+            <p class="auth-kicker">Secure access</p>
+            <h2>Enter your account to open your workspace</h2>
+            <p class="auth-subtext">Choose sign in for existing accounts, or switch to sign up to create a new private workspace.</p>
+          </div>
+
+          <div class="auth-switcher">
+            <button type="button" class="auth-switch auth-switch-active" id="show-signin">Sign In</button>
+            <button type="button" class="auth-switch" id="show-signup">Sign Up</button>
+          </div>
+
+          <div class="auth-card-stack">
+            <form id="signin-form" class="auth-card auth-card-primary auth-fade-in">
+              <h3>Sign In</h3>
+              <label class="field-label" for="signin-email">Email</label>
+              <input id="signin-email" type="email" placeholder="Enter your email" required />
+              <label class="field-label" for="signin-password">Password</label>
+              <div class="password-field">
+                <input id="signin-password" type="password" placeholder="Enter your password" required />
+                <button type="button" class="password-toggle" data-target="signin-password">Show</button>
+              </div>
+              <div class="auth-row">
+                <label class="remember-row"><input id="remember-me" type="checkbox" checked /> <span>Remember me</span></label>
+                <button type="button" class="link-button" id="forgot-toggle">Forgot password?</button>
+              </div>
+              <button type="submit" class="auth-submit auth-submit-dark">Sign In</button>
+            </form>
+
+            <form id="signup-form" class="auth-card auth-card-secondary auth-fade-in auth-hidden">
+              <h3>Create Account</h3>
+              <label class="field-label" for="signup-name">Full name</label>
+              <input id="signup-name" type="text" placeholder="Enter your full name" required />
+              <label class="field-label" for="signup-email">Email</label>
+              <input id="signup-email" type="email" placeholder="Create with email" required />
+              <label class="field-label" for="signup-password">Password</label>
+              <div class="password-field password-field-dark">
+                <input id="signup-password" type="password" placeholder="Choose a password" required />
+                <button type="button" class="password-toggle password-toggle-dark" data-target="signup-password">Show</button>
+              </div>
+              <button type="submit" class="auth-submit auth-submit-light">Create Workspace</button>
+            </form>
+          </div>
+
+          <section id="reset-panel" class="reset-panel reset-hidden">
+            <div class="reset-panel-header">
+              <div>
+                <p class="auth-kicker">Recovery</p>
+                <h3>Reset your password</h3>
+              </div>
+              <button type="button" class="link-button" id="reset-close">Close</button>
+            </div>
+            <form id="reset-form" class="reset-form">
+              <input id="reset-email" type="email" placeholder="Account email" required />
+              <div class="password-field">
+                <input id="reset-password" type="password" placeholder="New password" required />
+                <button type="button" class="password-toggle" data-target="reset-password">Show</button>
+              </div>
+              <button type="submit" class="auth-submit auth-submit-dark">Update Password</button>
+            </form>
+          </section>
+
+          <p class="auth-feedback" id="auth-feedback"></p>
+        </section>
+      </div>
+    </section>
+
+    <script src="/assets/login.js" defer></script>
+  </body>
+</html>

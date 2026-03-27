@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workspace | RAG Knowledge Workspace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <div id="app-shell" class="page-shell">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+      <header class="topbar glass">
+        <div>
+          <p class="eyebrow">Knowledge Operating System</p>
+          <h1>RAG Knowledge Workspace</h1>
+        </div>
+        <div class="topbar-actions">
+          <span class="status-pill" id="health-status">Checking backend</span>
+          <span class="badge" id="auth-state">Signed in</span>
+          <button class="ghost-button" id="refresh-button">Refresh</button>
+          <button type="button" class="ghost-button logout-button" id="logout-button">Logout</button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="left-column">
+          <section class="hero glass">
+            <div class="hero-copy">
+              <p class="eyebrow">Elegant retrieval experience</p>
+              <h2>Turn dense PDFs into a calm, cinematic research flow.</h2>
+              <p class="hero-text">Upload documents, choose a source, and keep track of which file is active so the workspace stays understandable after every action.</p>
+              <div class="workspace-summary">
+                <div class="summary-card">
+                  <span class="summary-label">Selected source</span>
+                  <strong id="selected-doc-label">All documents</strong>
+                </div>
+                <div class="summary-card">
+                  <span class="summary-label">Answer mode</span>
+                  <strong id="answer-mode-label">Waiting</strong>
+                </div>
+              </div>
+            </div>
+            <div class="hero-orb">
+              <div class="orb-core"></div>
+              <div class="orbit orbit-a"></div>
+              <div class="orbit orbit-b"></div>
+              <div class="orbit orbit-c"></div>
+            </div>
+          </section>
+
+          <section class="glass insights">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Roadmap</p>
+                <h3>Feature Modules</h3>
+              </div>
+            </div>
+            <div id="feature-list" class="feature-list"></div>
+          </section>
+        </section>
+
+        <section class="panel-column">
+          <section class="glass panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Ingestion</p>
+                <h3>Upload PDF</h3>
+              </div>
+              <span class="badge">Private workspace</span>
+            </div>
+            <form id="upload-form" class="upload-form">
+              <label class="upload-dropzone" for="pdf-file">
+                <input id="pdf-file" name="file" type="file" accept=".pdf" required />
+                <span>Choose a PDF to index</span>
+                <small>Files are stored inside your private workspace folder.</small>
+              </label>
+              <button type="submit" class="primary-button">Upload and Index</button>
+            </form>
+            <p class="inline-feedback" id="upload-feedback"></p>
+          </section>
+
+          <section class="glass panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Workspace</p>
+                <h3>Indexed Documents</h3>
+              </div>
+            </div>
+            <div id="documents-list" class="document-list"></div>
+          </section>
+        </section>
+
+        <section class="glass query-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Ask</p>
+              <h3>Research Chat</h3>
+            </div>
+            <select id="doc-select" class="doc-select">
+              <option value="">All documents</option>
+            </select>
+          </div>
+          <form id="chat-form" class="chat-form">
+            <textarea id="question" rows="5" placeholder="Ask about key concepts, summary points, definitions, or exam questions..." required></textarea>
+            <button type="submit" class="primary-button">Generate Answer</button>
+          </form>
+          <div class="answer-card" id="answer-card">
+            <div class="answer-header">
+              <p class="answer-label">Response</p>
+              <span id="answer-status" class="badge subtle-badge">Ready</span>
+            </div>
+            <div id="answer-text" class="answer-text">Your answer will appear here once the backend responds.</div>
+          </div>
+          <div class="sources-panel">
+            <div class="answer-header">
+              <p class="answer-label">Sources</p>
+              <span id="source-count" class="badge subtle-badge">0 sources</span>
+            </div>
+            <div id="sources-list" class="source-list"></div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <script src="/assets/workspace.js" defer></script>
+  </body>
+</html>
+

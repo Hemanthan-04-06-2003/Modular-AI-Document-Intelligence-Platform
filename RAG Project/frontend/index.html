@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RAG Knowledge Workspace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <section id="auth-screen" class="auth-screen">
+      <div class="auth-backdrop auth-backdrop-one"></div>
+      <div class="auth-backdrop auth-backdrop-two"></div>
+      <div class="auth-shell">
+        <aside class="auth-visual-panel">
+          <div class="visual-badge">PRIVATE KNOWLEDGE OS</div>
+          <div class="visual-art">
+            <div class="visual-wave wave-one"></div>
+            <div class="visual-wave wave-two"></div>
+            <div class="visual-wave wave-three"></div>
+          </div>
+          <div class="visual-copy">
+            <p class="visual-eyebrow">Grounded research</p>
+            <h1>Welcome Back</h1>
+            <p>
+              Sign in to your private document workspace and continue asking grounded questions across your personal RAG library.
+            </p>
+            <div class="visual-callout">
+              <strong>Your own storage</strong>
+              <span>Every login now has a separate workspace database and private uploaded files.</span>
+            </div>
+          </div>
+        </aside>
+
+        <section class="auth-form-panel">
+          <div class="auth-brand">RAG Knowledge Workspace</div>
+          <div class="auth-panel-copy">
+            <p class="auth-kicker">Secure access</p>
+            <h2>Enter your account to open your workspace</h2>
+            <p class="auth-subtext">Use sign in for existing accounts, or create a new private workspace below.</p>
+          </div>
+
+          <div class="auth-card-grid">
+            <form id="signin-form" class="auth-card auth-card-primary">
+              <h3>Sign In</h3>
+              <label class="field-label" for="signin-email">Email</label>
+              <input id="signin-email" type="email" placeholder="Enter your email" required />
+              <label class="field-label" for="signin-password">Password</label>
+              <input id="signin-password" type="password" placeholder="Enter your password" required />
+              <button type="submit" class="auth-submit auth-submit-dark">Sign In</button>
+            </form>
+
+            <form id="signup-form" class="auth-card auth-card-secondary">
+              <h3>Create Account</h3>
+              <label class="field-label" for="signup-name">Full name</label>
+              <input id="signup-name" type="text" placeholder="Enter your full name" required />
+              <label class="field-label" for="signup-email">Email</label>
+              <input id="signup-email" type="email" placeholder="Create with email" required />
+              <label class="field-label" for="signup-password">Password</label>
+              <input id="signup-password" type="password" placeholder="Choose a password" required />
+              <button type="submit" class="auth-submit auth-submit-light">Create Workspace</button>
+            </form>
+          </div>
+
+          <p class="auth-feedback" id="auth-feedback"></p>
+        </section>
+      </div>
+    </section>
+
+    <div id="app-shell" class="page-shell app-hidden">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+      <header class="topbar glass">
+        <div>
+          <p class="eyebrow">Knowledge Operating System</p>
+          <h1>RAG Knowledge Workspace</h1>
+        </div>
+        <div class="topbar-actions">
+          <span class="status-pill" id="health-status">Checking backend</span>
+          <span class="badge" id="auth-state">Signed out</span>
+          <button class="ghost-button" id="refresh-button">Refresh</button>
+          <button type="button" class="ghost-button logout-button" id="logout-button">Logout</button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="hero glass">
+          <div class="hero-copy">
+            <p class="eyebrow">Elegant retrieval experience</p>
+            <h2>Turn dense PDFs into a calm, cinematic research flow.</h2>
+            <p class="hero-text">
+              Upload documents, inspect system health, and ask grounded questions through a smoother interface built to replace the old Streamlit screen.
+            </p>
+          </div>
+          <div class="hero-orb">
+            <div class="orb-core"></div>
+            <div class="orbit orbit-a"></div>
+            <div class="orbit orbit-b"></div>
+            <div class="orbit orbit-c"></div>
+          </div>
+        </section>
+
+        <section class="panel-column">
+          <section class="glass panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Ingestion</p>
+                <h3>Upload PDF</h3>
+              </div>
+              <span class="badge">Private workspace</span>
+            </div>
+            <form id="upload-form" class="upload-form">
+              <label class="upload-dropzone" for="pdf-file">
+                <input id="pdf-file" name="file" type="file" accept=".pdf" required />
+                <span>Choose a PDF to index</span>
+                <small>Files are stored inside your private workspace folder.</small>
+              </label>
+              <button type="submit" class="primary-button">Upload and Index</button>
+            </form>
+            <p class="inline-feedback" id="upload-feedback"></p>
+          </section>
+
+          <section class="glass panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Workspace</p>
+                <h3>Indexed Documents</h3>
+              </div>
+            </div>
+            <div id="documents-list" class="document-list"></div>
+          </section>
+        </section>
+
+        <section class="glass query-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Ask</p>
+              <h3>Research Chat</h3>
+            </div>
+            <select id="doc-select" class="doc-select">
+              <option value="">All documents</option>
+            </select>
+          </div>
+          <form id="chat-form" class="chat-form">
+            <textarea
+              id="question"
+              rows="5"
+              placeholder="Ask about key concepts, summary points, definitions, or exam questions..."
+              required
+            ></textarea>
+            <button type="submit" class="primary-button">Generate Answer</button>
+          </form>
+          <div class="answer-card" id="answer-card">
+            <p class="answer-label">Response</p>
+            <div id="answer-text" class="answer-text">Your answer will appear here once the backend responds.</div>
+          </div>
+          <div class="sources-panel">
+            <p class="answer-label">Sources</p>
+            <div id="sources-list" class="source-list"></div>
+          </div>
+        </section>
+
+        <section class="glass insights">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Roadmap</p>
+              <h3>Feature Modules</h3>
+            </div>
+          </div>
+          <div id="feature-list" class="feature-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/assets/app.js" defer></script>
+  </body>
+</html>
